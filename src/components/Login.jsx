@@ -3,16 +3,19 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import api from "../api";
 import { useNavigate } from 'react-router-dom';
+import Loader from './Loader';
 
 function Login() {
    const [email, setemail] = useState('');
    const [password, setpassword] = useState('');
+   const [loader, setloader] = useState(false);
 
    const navigate = useNavigate();
 
    async function handleSubmit(e) {
       e.preventDefault();
       // const resp = await api.get("/");
+      setloader(true);
       const resp = await api.post("/login", {
          email: email,
          password: password
@@ -25,6 +28,7 @@ function Login() {
       const isAdmin = resp.data.isAdmin;
       localStorage.setItem("isAdmin", isAdmin);
       localStorage.setItem("Authorization", "Bearer " + token);
+      setloader(false);
       navigate("/");
    }
 
@@ -46,6 +50,9 @@ function Login() {
          <Button variant="primary" type="submit" onClick={handleSubmit}>
             Submit
          </Button>
+         {
+            loader && <Loader />
+         }
       </Form>
    );
 }

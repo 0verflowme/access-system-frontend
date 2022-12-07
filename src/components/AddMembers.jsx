@@ -3,8 +3,10 @@ import Card from 'react-bootstrap/Card';
 import api from '../api'
 import { useState, useEffect } from 'react';
 import Addmodal from './Addmodal';
+import Loader from './Loader';
 function AddMembers() {
    const [members, setmembers] = useState([]);
+   const [loader, setloader] = useState(true);
 
    useEffect(() => {
       const getmembers = async () => {
@@ -12,6 +14,7 @@ function AddMembers() {
             headers: { "Authorization": localStorage.getItem('Authorization') }
          });
          setmembers(resp.data.users);
+         setloader(false);
       }
       getmembers();
    }, []);
@@ -21,6 +24,9 @@ function AddMembers() {
    return (
       <div className='container mt-5 d-flex flex-wrap '>
          <Addmodal />
+         {
+            loader && <Loader />
+         }
          {
             members.map((member) => {
                return (
