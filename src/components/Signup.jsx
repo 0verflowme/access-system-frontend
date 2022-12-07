@@ -35,7 +35,7 @@ function Signup() {
 
    return (
       <Form className='container mt-5'>
-         <Form.Group className="mb-3" controlId="formBasicEmail">
+         <Form.Group className="mb-3" controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control type="text" placeholder="Your Username" value={user} onChange={(e) => setuser(e.target.value)} />
 

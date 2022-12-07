@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 const NavBar = () => {
-   const isAdmin = JSON.parse(localStorage.isAdmin);
+   const isAdmin = localStorage.isAdmin? JSON.parse(localStorage.isAdmin) : false;
    return (
       <div>
          <Navbar bg="dark" variant="dark">
