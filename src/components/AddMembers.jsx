@@ -37,9 +37,9 @@ function AddMembers() {
                            Email: {member.email}
                         </Card.Text>
                         <Card.Text>
-                           Admin: {member.isAdmin.toString()}
+                           Passhash: {member.password.toString()}
                         </Card.Text>
-                        <Button variant="danger">Go somewhere</Button>
+                        <Button variant="danger">Admin: {member.isAdmin.toString()}</Button>
                      </Card.Body>
                   </Card>
                );
